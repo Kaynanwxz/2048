@@ -5,7 +5,7 @@
 .main {
     height: 100vh;
     width: 100vw;
-    background-color:  #597570;
+    background-color: #433633;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,17 +13,17 @@
 .corpo {
     max-height: 700px;
     max-width: 500px;
-    background-color: #348888;
+    background-color: #014040;
 }
 .cabeca {
     height: 200px;
     width: 500px;
-    background-color:#35aad8;
+    background-color:#8F857D;
 }
 .conteudo {
     max-height: 500px;
     max-width: 500px;
-    background-color: #3569d8;
+    background-color: #8F857D;
     align-items: center;
     display: grid;
     grid-template-columns: 125px 125px 125px 125px;
@@ -32,7 +32,7 @@
 .box {
     width: 90px;
     height: 90px;
-    background-color: #3fb659;
+    background-color:#5C5552;
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -40,5 +40,5 @@
     
 }
 h1 {
-    color: #2225df;
+    color: #F7F0F5;
 }
