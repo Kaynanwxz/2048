@@ -19,6 +19,21 @@
     height: 200px;
     width: 500px;
     background-color:#8F857D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.visor {
+    background-color: #5C5552;
+    height: 80px;
+    width: 445px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 20px;
+}
+.score {
+    margin-right: 5px;
 }
 .conteudo {
     max-height: 500px;

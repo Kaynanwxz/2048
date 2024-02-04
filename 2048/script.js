@@ -1,9 +1,10 @@
-let box = document.querySelectorAll("#box");
+const box = document.querySelectorAll("#box");
+const score = document.getElementById('score');
 
 for (let i = 0; i < box.length; i++) {
   box[i].innerHTML = `<h1 id="${i}"></h1>`;
 }
-
+let perdeu = 0;
 let n1 = document.getElementById("0");
 let n2 = document.getElementById("1");
 let n3 = document.getElementById("2");
@@ -23,23 +24,35 @@ let n16 = document.getElementById("15");
 
 let n = [n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16];
 
+function pontos() {
+  n.forEach(element => {
+    if (parseInt(score.innerHTML) < parseInt(element.innerHTML)){
+      score.innerHTML = parseInt(element.innerHTML)
+    }
+  });
+}
+
+
 function random() {
-  let r = Math.floor(Math.random() * 16);
-  let r2 = Math.floor(Math.random() * 100);
-  if (r2 < 90) {
-    r2 = 2;
-  } else {
-    r2 = 4;
-  }
-  if (n[r].innerHTML == "") {
-    n[r].innerHTML = r2;
-  } else {
-    random();
-  }
+    let r = Math.floor(Math.random() * 16);
+    let r2 = Math.floor(Math.random() * 100);
+    if (r2 < 90) {
+      r2 = 2;
+    } else {
+      r2 = 4;
+    }
+    if (n[r].innerHTML == "") {
+      n[r].innerHTML = r2;
+    } else {
+      random();
+    }
 }
 random();
 random();
-const doc = document.getElementById;
+pontos()
+
+
+
 document.addEventListener("keydown", function (event) {
   switch (event.key) {
     case "ArrowUp":
@@ -85,6 +98,8 @@ function mover(direcao) {
 
 function cima(letra) {
   switch (letra) {
+
+    //primeira camada
     case "a":
       if (n5.innerHTML != "") {
         if (n1.innerHTML != "") {
@@ -138,18 +153,19 @@ function cima(letra) {
       }
       break;
 
+        //segunda camada
     case "e":
       if (n9.innerHTML != "") {
         if (n5.innerHTML != "") {
           if (n5.innerHTML == n9.innerHTML) {
             n5.innerHTML = parseInt(n9.innerHTML) + parseInt(n5.innerHTML);
+            n9.innerHTML = "";
           }
         } else {
           n5.innerHTML = n9.innerHTML;
           n9.innerHTML = "";
           cima("a");
         }
-        n9.innerHTML = "";
       }
       break;
     case "f":
@@ -157,13 +173,13 @@ function cima(letra) {
         if (n6.innerHTML != "") {
           if (n6.innerHTML == n10.innerHTML) {
             n6.innerHTML = parseInt(n10.innerHTML) + parseInt(n6.innerHTML);
+            n10.innerHTML = "";
           }
         } else {
           n6.innerHTML = n10.innerHTML;
           n10.innerHTML = "";
           cima("b");
         }
-        n10.innerHTML = "";
       }
       break;
     case "g":
@@ -171,13 +187,13 @@ function cima(letra) {
         if (n7.innerHTML != "") {
           if (n7.innerHTML == n11.innerHTML) {
             n7.innerHTML = parseInt(n11.innerHTML) + parseInt(n7.innerHTML);
+            n11.innerHTML = "";
           }
         } else {
           n7.innerHTML = n11.innerHTML;
           n11.innerHTML = "";
           cima("c");
         }
-        n11.innerHTML = "";
       }
       break;
     case "h":
@@ -185,27 +201,28 @@ function cima(letra) {
         if (n8.innerHTML != "") {
           if (n8.innerHTML == n12.innerHTML) {
             n8.innerHTML = parseInt(n12.innerHTML) + parseInt(n8.innerHTML);
+            n12.innerHTML = "";
           }
         } else {
           n8.innerHTML = n12.innerHTML;
           n12.innerHTML = "";
           cima("d");
         }
-        n12.innerHTML = "";
       }
       break;
+      //terceira camada
     case "i":
       if (n13.innerHTML != "") {
         if (n9.innerHTML != "") {
           if (n9.innerHTML == n13.innerHTML) {
             n9.innerHTML = parseInt(n13.innerHTML) + parseInt(n9.innerHTML);
+            n13.innerHTML = "";
           }
         } else {
           n9.innerHTML = n13.innerHTML;
           n13.innerHTML = "";
           cima("e");
         }
-        n13.innerHTML = "";
       }
       break;
     case "j":
@@ -213,13 +230,13 @@ function cima(letra) {
         if (n10.innerHTML != "") {
           if (n10.innerHTML == n14.innerHTML) {
             n10.innerHTML = parseInt(n14.innerHTML) + parseInt(n10.innerHTML);
+            n14.innerHTML = "";
           }
         } else {
           n10.innerHTML = n14.innerHTML;
           n14.innerHTML = "";
           cima("f");
         }
-        n14.innerHTML = "";
       }
       break;
     case "k":
@@ -227,13 +244,13 @@ function cima(letra) {
         if (n11.innerHTML != "") {
           if (n11.innerHTML == n15.innerHTML) {
             n11.innerHTML = parseInt(n15.innerHTML) + parseInt(n11.innerHTML);
+            n15.innerHTML = "";
           }
         } else {
           n11.innerHTML = n15.innerHTML;
           n15.innerHTML = "";
           cima("g");
         }
-        n15.innerHTML = "";
       }
       break;
     case "l":
@@ -241,13 +258,13 @@ function cima(letra) {
         if (n12.innerHTML != "") {
           if (n12.innerHTML == n16.innerHTML) {
             n12.innerHTML = parseInt(n16.innerHTML) + parseInt(n12.innerHTML);
+            n16.innerHTML = "";
           }
         } else {
           n12.innerHTML = n16.innerHTML;
           n16.innerHTML = "";
           cima("h");
         }
-        n16.innerHTML = "";
       }
       break;
     default:
@@ -313,13 +330,13 @@ function direita(letra) {
         if (n3.innerHTML != "") {
           if (n3.innerHTML == n2.innerHTML) {
             n3.innerHTML = parseInt(n2.innerHTML) + parseInt(n3.innerHTML);
+            n2.innerHTML = "";
           }
         } else {
           n3.innerHTML = n2.innerHTML;
           n2.innerHTML = "";
           direita("a");
         }
-        n2.innerHTML = "";
       }
       break;
     case "f":
@@ -327,13 +344,13 @@ function direita(letra) {
         if (n7.innerHTML != "") {
           if (n7.innerHTML == n6.innerHTML) {
             n7.innerHTML = parseInt(n6.innerHTML) + parseInt(n7.innerHTML);
+            n6.innerHTML = "";
           }
         } else {
           n7.innerHTML = n6.innerHTML;
           n6.innerHTML = "";
           direita("b");
         }
-        n6.innerHTML = "";
       }
       break;
     case "g":
@@ -341,13 +358,13 @@ function direita(letra) {
         if (n11.innerHTML != "") {
           if (n11.innerHTML == n10.innerHTML) {
             n11.innerHTML = parseInt(n10.innerHTML) + parseInt(n11.innerHTML);
+            n10.innerHTML = "";
           }
         } else {
           n11.innerHTML = n10.innerHTML;
           n10.innerHTML = "";
           direita("c");
         }
-        n10.innerHTML = "";
       }
       break;
     case "h":
@@ -355,13 +372,13 @@ function direita(letra) {
         if (n15.innerHTML != "") {
           if (n15.innerHTML == n14.innerHTML) {
             n15.innerHTML = parseInt(n14.innerHTML) + parseInt(n15.innerHTML);
+            n14.innerHTML = "";
           }
         } else {
           n15.innerHTML = n14.innerHTML;
           n14.innerHTML = "";
           direita("d");
         }
-        n14.innerHTML = "";
       }
       break;
     case "i":
@@ -369,13 +386,13 @@ function direita(letra) {
         if (n2.innerHTML != "") {
           if (n2.innerHTML == n1.innerHTML) {
             n2.innerHTML = parseInt(n1.innerHTML) + parseInt(n2.innerHTML);
+            n1.innerHTML = "";
           }
         } else {
           n2.innerHTML = n1.innerHTML;
           n1.innerHTML = "";
           direita("e");
         }
-        n1.innerHTML = "";
       }
       break;
     case "j":
@@ -383,13 +400,13 @@ function direita(letra) {
         if (n6.innerHTML != "") {
           if (n6.innerHTML == n5.innerHTML) {
             n6.innerHTML = parseInt(n5.innerHTML) + parseInt(n6.innerHTML);
+            n5.innerHTML = "";
           }
         } else {
           n6.innerHTML = n5.innerHTML;
           n5.innerHTML = "";
           direita("f");
         }
-        n5.innerHTML = "";
       }
       break;
     case "k":
@@ -397,13 +414,13 @@ function direita(letra) {
         if (n10.innerHTML != "") {
           if (n10.innerHTML == n9.innerHTML) {
             n10.innerHTML = parseInt(n9.innerHTML) + parseInt(n10.innerHTML);
+            n9.innerHTML = "";
           }
         } else {
           n10.innerHTML = n9.innerHTML;
           n9.innerHTML = "";
           direita("g");
         }
-        n9.innerHTML = "";
       }
       break;
     case "l":
@@ -411,13 +428,13 @@ function direita(letra) {
         if (n14.innerHTML != "") {
           if (n14.innerHTML == n13.innerHTML) {
             n14.innerHTML = parseInt(n13.innerHTML) + parseInt(n14.innerHTML);
+            n13.innerHTML = "";
           }
         } else {
           n14.innerHTML = n13.innerHTML;
           n13.innerHTML = "";
           direita("h");
         }
-        n13.innerHTML = "";
       }
       break;
 
@@ -484,13 +501,13 @@ function baixo(letra) {
         if (n9.innerHTML != "") {
           if (n9.innerHTML == n5.innerHTML) {
             n9.innerHTML = parseInt(n5.innerHTML) + parseInt(n9.innerHTML);
+            n5.innerHTML = "";
           }
         } else {
           n9.innerHTML = n5.innerHTML;
           n5.innerHTML = "";
           baixo("a");
         }
-        n5.innerHTML = "";
       }
       break;
     case "f":
@@ -498,13 +515,13 @@ function baixo(letra) {
         if (n10.innerHTML != "") {
           if (n10.innerHTML == n6.innerHTML) {
             n10.innerHTML = parseInt(n6.innerHTML) + parseInt(n10.innerHTML);
+            n6.innerHTML = "";
           }
         } else {
           n10.innerHTML = n6.innerHTML;
           n6.innerHTML = "";
           baixo("b");
         }
-        n6.innerHTML = "";
       }
       break;
     case "g":
@@ -512,13 +529,13 @@ function baixo(letra) {
         if (n11.innerHTML != "") {
           if (n11.innerHTML == n7.innerHTML) {
             n11.innerHTML = parseInt(n7.innerHTML) + parseInt(n11.innerHTML);
+            n7.innerHTML = "";
           }
         } else {
           n11.innerHTML = n7.innerHTML;
           n7.innerHTML = "";
           baixo("c");
         }
-        n7.innerHTML = "";
       }
       break;
     case "h":
@@ -526,13 +543,13 @@ function baixo(letra) {
         if (n12.innerHTML != "") {
           if (n12.innerHTML == n8.innerHTML) {
             n12.innerHTML = parseInt(n8.innerHTML) + parseInt(n12.innerHTML);
+            n8.innerHTML = "";
           }
         } else {
           n12.innerHTML = n8.innerHTML;
           n8.innerHTML = "";
           baixo("d");
         }
-        n8.innerHTML = "";
       }
       break;
     case "i":
@@ -540,13 +557,13 @@ function baixo(letra) {
         if (n5.innerHTML != "") {
           if (n5.innerHTML == n1.innerHTML) {
             n5.innerHTML = parseInt(n1.innerHTML) + parseInt(n5.innerHTML);
+            n1.innerHTML = "";
           }
         } else {
           n5.innerHTML = n1.innerHTML;
           n1.innerHTML = "";
           baixo("e");
         }
-        n1.innerHTML = "";
       }
       break;
     case "j":
@@ -554,13 +571,13 @@ function baixo(letra) {
         if (n6.innerHTML != "") {
           if (n6.innerHTML == n2.innerHTML) {
             n6.innerHTML = parseInt(n2.innerHTML) + parseInt(n6.innerHTML);
+            n2.innerHTML = "";
           }
         } else {
           n6.innerHTML = n2.innerHTML;
           n2.innerHTML = "";
           baixo("f");
         }
-        n2.innerHTML = "";
       }
       break;
     case "k":
@@ -568,13 +585,13 @@ function baixo(letra) {
         if (n7.innerHTML != "") {
           if (n7.innerHTML == n3.innerHTML) {
             n7.innerHTML = parseInt(n3.innerHTML) + parseInt(n7.innerHTML);
+            n3.innerHTML = "";
           }
         } else {
           n7.innerHTML = n3.innerHTML;
           n3.innerHTML = "";
           baixo("g");
         }
-        n3.innerHTML = "";
       }
       break;
     case "l":
@@ -582,13 +599,13 @@ function baixo(letra) {
         if (n8.innerHTML != "") {
           if (n8.innerHTML == n4.innerHTML) {
             n8.innerHTML = parseInt(n4.innerHTML) + parseInt(n8.innerHTML);
+            n4.innerHTML = "";
           }
         } else {
           n8.innerHTML = n4.innerHTML;
           n4.innerHTML = "";
           baixo("h");
         }
-        n4.innerHTML = "";
       }
       break;
 
@@ -655,13 +672,13 @@ function esquerda(letra) {
         if (n2.innerHTML != "") {
           if (n2.innerHTML == n3.innerHTML) {
             n2.innerHTML = parseInt(n3.innerHTML) + parseInt(n2.innerHTML);
+            n3.innerHTML = "";
           }
         } else {
           n2.innerHTML = n3.innerHTML;
           n3.innerHTML = "";
           esquerda("a");
         }
-        n3.innerHTML = "";
       }
       break;
     case "f":
@@ -669,13 +686,13 @@ function esquerda(letra) {
         if (n6.innerHTML != "") {
           if (n6.innerHTML == n7.innerHTML) {
             n6.innerHTML = parseInt(n7.innerHTML) + parseInt(n6.innerHTML);
+            n7.innerHTML = "";
           }
         } else {
           n6.innerHTML = n7.innerHTML;
           n7.innerHTML = "";
           esquerda("b");
         }
-        n7.innerHTML = "";
       }
       break;
     case "g":
@@ -683,13 +700,13 @@ function esquerda(letra) {
         if (n10.innerHTML != "") {
           if (n10.innerHTML == n11.innerHTML) {
             n10.innerHTML = parseInt(n11.innerHTML) + parseInt(n10.innerHTML);
+            n11.innerHTML = "";
           }
         } else {
           n10.innerHTML = n11.innerHTML;
           n11.innerHTML = "";
           esquerda("c");
         }
-        n11.innerHTML = "";
       }
       break;
     case "h":
@@ -697,13 +714,13 @@ function esquerda(letra) {
         if (n14.innerHTML != "") {
           if (n14.innerHTML == n15.innerHTML) {
             n14.innerHTML = parseInt(n15.innerHTML) + parseInt(n14.innerHTML);
+            n15.innerHTML = "";
           }
         } else {
           n14.innerHTML = n15.innerHTML;
           n15.innerHTML = "";
           esquerda("d");
         }
-        n15.innerHTML = "";
       }
       break;
     case "i":
@@ -711,13 +728,13 @@ function esquerda(letra) {
         if (n3.innerHTML != "") {
           if (n3.innerHTML == n4.innerHTML) {
             n3.innerHTML = parseInt(n4.innerHTML) + parseInt(n3.innerHTML);
+            n4.innerHTML = "";
           }
         } else {
           n3.innerHTML = n4.innerHTML;
           n4.innerHTML = "";
           esquerda("e");
         }
-        n4.innerHTML = "";
       }
       break;
     case "j":
@@ -725,13 +742,13 @@ function esquerda(letra) {
         if (n7.innerHTML != "") {
           if (n7.innerHTML == n8.innerHTML) {
             n7.innerHTML = parseInt(n8.innerHTML) + parseInt(n7.innerHTML);
+            n8.innerHTML = "";
           }
         } else {
           n7.innerHTML = n8.innerHTML;
           n8.innerHTML = "";
           esquerda("f");
         }
-        n8.innerHTML = "";
       }
       break;
     case "k":
@@ -739,13 +756,13 @@ function esquerda(letra) {
         if (n11.innerHTML != "") {
           if (n11.innerHTML == n12.innerHTML) {
             n11.innerHTML = parseInt(n12.innerHTML) + parseInt(n11.innerHTML);
+            n12.innerHTML = "";
           }
         } else {
           n11.innerHTML = n12.innerHTML;
           n12.innerHTML = "";
           esquerda("g");
         }
-        n12.innerHTML = "";
       }
       break;
     case "l":
@@ -753,13 +770,13 @@ function esquerda(letra) {
         if (n15.innerHTML != "") {
           if (n15.innerHTML == n16.innerHTML) {
             n15.innerHTML = parseInt(n16.innerHTML) + parseInt(n15.innerHTML);
+            n16.innerHTML = "";
           }
         } else {
           n15.innerHTML = n16.innerHTML;
           n16.innerHTML = "";
           esquerda("h");
         }
-        n16.innerHTML = "";
       }
       break;
 
@@ -782,6 +799,7 @@ function moverCima() {
   cima("k");
   cima("l");
   random();
+  pontos()
 }
 
 function moverDireita() {
@@ -798,6 +816,7 @@ function moverDireita() {
   direita("k");
   direita("l");
   random();
+  pontos()
 }
 function moverBaixo() {
   baixo("a");
@@ -813,6 +832,7 @@ function moverBaixo() {
   baixo("k");
   baixo("l");
   random();
+  pontos()
 }
 function moverEsquerda() {
   esquerda("a");
@@ -828,4 +848,5 @@ function moverEsquerda() {
   esquerda("k");
   esquerda("l");
   random();
+  pontos()
 }
