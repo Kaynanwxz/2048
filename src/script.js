@@ -18,12 +18,12 @@ function random() {
 }
 
 function pontos() {
+  random();
+  random();
   n.forEach((element) => {
-    parseInt(score.innerHTML < parseInt(element.innerHTML)) &&
+    parseInt(score.innerHTML) < parseInt(element.innerHTML) &&
       (score.innerHTML = parseInt(element.innerHTML));
   });
-  random();
-  random();
 }
 pontos();
 
@@ -35,6 +35,7 @@ document.addEventListener("keydown", (event) => {
     event.key == "ArrowLeft"
   ) {
     new rodar(event.key);
+
   }
 });
 function engrenagem(x, z) {
