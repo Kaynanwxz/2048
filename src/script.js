@@ -28,7 +28,12 @@ function pontos() {
 pontos();
 
 document.addEventListener("keydown", (event) => {
-  if (event.key == "ArrowUp" || "ArrowRight" || "ArrowDown" || "ArrowLeft") {
+  if (
+    event.key == "ArrowUp" ||
+    event.key == "ArrowRight" ||
+    event.key == "ArrowDown" ||
+    event.key == "ArrowLeft"
+  ) {
     new rodar(event.key);
   }
 });
