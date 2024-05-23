@@ -1,50 +1,37 @@
-class rodar {
-  constructor(direction) {
-    if (direction == "ArrowUp") {
-      this.on(4, 0, true);
-      this.on(8, 4, true);
-      this.on(4, 0, true);
-      this.on(12, 8, true);
-      this.on(8, 4, true);
-      this.on(4, 0, true);
-    }
-    if (direction == "ArrowRight") {
-      this.on(2, 1, false);
-      this.on(3, 2, false);
-      this.on(2, 1, false);
-      this.on(4, 3, false);
-      this.on(3, 2, false);
-      this.on(2, 1, false);
-    }
-    if (direction == "ArrowDown") {
-      this.on(8, 12, true);
-      this.on(4, 8, true);
-      this.on(8, 12, true);
-      this.on(0, 4, true);
-      this.on(4, 8, true);
-      this.on(8, 12, true);
-    }
-    if (direction == "ArrowLeft") {
-      this.on(3, 4, false);
-      this.on(2, 3, false);
-      this.on(3, 4, false);
-      this.on(1, 2, false);
-      this.on(2, 3, false);
-      this.on(3, 4, false);
-    }
-    pontos();
+class turnOn {
+  constructor(a1, b1, a2, b2, a3, b3, isPositive) {
+    this.on(a1, b1, isPositive);
+    this.on(a2, b2, isPositive);
+    this.on(a1, b1, isPositive);
+    this.on(a3, b3, isPositive);
+    this.on(a2, b2, isPositive);
+    this.on(a1, b1, isPositive);
+    score();
   }
   on(a, b, isPositive) {
     for (let i = 0; i < 4; i++) {
       isPositive == true
-        ? engrenagem(
+        ? this.move(
             document.getElementById(`${i + a}`),
             document.getElementById(`${i + b}`)
           )
-        : engrenagem(
+        : this.move(
             document.getElementById(`${(i + 1) * 4 - a}`),
             document.getElementById(`${(i + 1) * 4 - b}`)
           );
+    }
+  }
+  move(x, z) {
+    if (x.innerHTML != "") {
+      if (z.innerHTML != "") {
+        if (z.innerHTML == x.innerHTML) {
+          z.innerHTML = parseInt(x.innerHTML) + parseInt(z.innerHTML);
+          x.innerHTML = "";
+        }
+      } else {
+        z.innerHTML = x.innerHTML;
+        x.innerHTML = "";
+      }
     }
   }
 }
